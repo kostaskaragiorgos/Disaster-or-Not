@@ -5,7 +5,7 @@ import re
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer
-
+import pickle
 dataset = pd.read_csv('train.csv',)
 dataset = dataset.iloc[:, 3:]
 print(dataset.head())
@@ -48,3 +48,6 @@ print(cm)
 acc = accuracy_score(y_test, y_pred)
 
 print(acc)
+
+#filename = 'finalized_model.sav'
+#pickle.dump(classifier, open(filename, 'wb'))
