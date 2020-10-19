@@ -8,31 +8,39 @@ from sklearn.feature_extraction.text import CountVectorizer
 import pickle
 dataset = pd.read_csv('train.csv',)
 dataset = dataset.iloc[:, 3:]
-print(dataset.head())
 
-print(dataset.isna().sum())
+
 
 #nltk.download('stopwords')
 
 corpus = []
-
 for i in range(0, len(dataset)):
-    text = re.sub('[^a-zA-Z]', ' ', dataset['text'][i])
+    text = re.sub(r'(https|http)?:\/\/(\w|\.|\/|\?|\=|\&|\%)*\b', '', dataset['text'][i], flags=re.MULTILINE)
+    text = re.sub('[^a-zA-Z]', ' ', text)
     text = text.lower()
     text = text.split()
     ps = PorterStemmer()
-    text = [ps.stem(word) for word in text if not word in set(stopwords.words('english'))]
+    all_stopwords = stopwords.words('english')
+#    all_stopwords.remove('not')
+#    all_stopwords.remove('to')
+#    all_stopwords.remove('are')
+#    all_stopwords.remove('in')
+#    all_stopwords.remove('a')
+#    all_stopwords.remove('into')
+    text = [word for word in text if not word in set(all_stopwords)]
     text = ' '.join(text)
     corpus.append(text)
-
 
 cv = CountVectorizer(max_features = 18800)
 X = cv.fit_transform(corpus).toarray()
 y = dataset.iloc[:, -1]
 
 
+
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 0)
+
+
 
 from sklearn.naive_bayes import GaussianNB
 classifier = GaussianNB()
