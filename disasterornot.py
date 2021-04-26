@@ -21,6 +21,12 @@ class DisasterOrNot():
         self.locationtext = Text(self.master, height=1, width=8)
         self.locationtext.pack()
         
+        self.textleb = Label(self.master, text="Enter the text")
+        self.textleb.pack()
+
+        self.texttext = Text(self.master, height=5, width=25)
+        self.texttext.pack()
+        
 
         self.menu = Menu(self.master)
         
