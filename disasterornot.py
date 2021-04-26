@@ -1,11 +1,11 @@
-from tkinter import Tk, Menu, Label, Text
+from tkinter import Tk, Menu, Label, Text, Button
 from tkinter import messagebox as msg
 
 class DisasterOrNot():
     def __init__(self,master):
         self.master = master
         self.master.title("Disaster Or Not")
-        self.master.geometry("250x200")
+        self.master.geometry("300x300")
         self.master.resizable(False,False)
 
         self.keywordleb = Label(self.master, text="Enter the keyword")
@@ -26,6 +26,9 @@ class DisasterOrNot():
 
         self.texttext = Text(self.master, height=5, width=25)
         self.texttext.pack()
+
+        self.predictbutton =  Button(self.master, text="Predict")
+        self.predictbutton.pack()
         
 
         self.menu = Menu(self.master)
