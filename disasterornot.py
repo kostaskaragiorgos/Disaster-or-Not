@@ -42,9 +42,9 @@ class DisasterOrNot():
     def predict(self):
         pass
 
-    
+    def clear(self):
+        pass
 
-    
     def helpmenu(self):
         pass
     
