@@ -39,6 +39,11 @@ class DisasterOrNot():
     def closefile(self):
         pass
 
+    def predict(self):
+        pass
+
+    
+
     
     def helpmenu(self):
         pass
