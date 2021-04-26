@@ -29,6 +29,9 @@ class DisasterOrNot():
 
         self.predictbutton =  Button(self.master, text="Predict")
         self.predictbutton.pack()
+
+        self.clearbutton = Button(self.master, text="Clear")
+        self.clearbutton.pack()
         
 
         self.menu = Menu(self.master)
