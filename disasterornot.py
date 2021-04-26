@@ -13,7 +13,15 @@ class DisasterOrNot():
 
         self.keywordtext = Text(self.master, height=1, width=8)
         self.keywordtext.pack()
+
+
+        self.locationleb = Label(self.master, text="Enter the location")
+        self.locationleb.pack()
+
+        self.locationtext = Text(self.master, height=1, width=8)
+        self.locationtext.pack()
         
+
         self.menu = Menu(self.master)
         
         self.file_menu = Menu(self.menu,tearoff = 0)
