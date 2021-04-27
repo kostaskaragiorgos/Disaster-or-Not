@@ -73,6 +73,7 @@ All project documentation is located in the `./doc`  folder.
 
 ### Radon_hal
 
+<p><img src = "images/Disaster Or Not Radon hal.png" title = "Disaster Or Not Radon HAL"/></p>
 
 ### Radon_mi
 
