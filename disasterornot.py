@@ -41,6 +41,10 @@ class DisasterOrNot():
         self.file_menu.add_command(label="Close file", accelerator="Ctrl+F4", command=self.closefile)
         self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
         self.menu.add_cascade(label = "File",menu=self.file_menu)
+
+        self.edit_menu = Menu(self.menu, tearoff= 0)
+        self.edit_menu.add_command(label="Clear")
+        self.menu.add_cascade(label = "Edit", menu=self.edit_menu)
         
         self.about_menu = Menu(self.menu,tearoff = 0)
         self.about_menu.add_command(label = "About",accelerator= 'Ctrl+I',command=self.aboutmenu)
