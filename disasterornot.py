@@ -7,6 +7,7 @@ class DisasterOrNot():
         self.master.title("Disaster Or Not")
         self.master.geometry("300x300")
         self.master.resizable(False,False)
+        self.filename = ""
 
         self.keywordleb = Label(self.master, text="Enter the keyword")
         self.keywordleb.pack()
@@ -67,7 +68,11 @@ class DisasterOrNot():
         pass
 
     def closefile(self):
-        pass
+        if self.filename == "":
+            msg.showerror("ERROR", "NO FILE TO CLOSE")
+        else:
+            self.filename = ""
+            msg.showinfo("SUSSESS", "YOUR CSV FILE HAS SUCCESFULLY CLOSED")
 
     def predict(self):
         pass
