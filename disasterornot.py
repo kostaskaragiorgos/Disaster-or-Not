@@ -1,4 +1,4 @@
-from tkinter import Tk, Menu, Label, Text, Button
+from tkinter import Tk, Menu, Label, Text, Button, END
 from tkinter import messagebox as msg
 
 class DisasterOrNot():
@@ -73,7 +73,10 @@ class DisasterOrNot():
         pass
 
     def clear(self):
-        pass
+        self.keywordtext.delete(1.0, END)
+        self.locationtext.delete(1.0, END)
+        self.texttext.delete(1.0, END)
+
 
     def helpmenu(self):
         pass
