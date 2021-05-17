@@ -1,6 +1,11 @@
 from tkinter import Tk, Menu, Label, Text, Button, END
 from tkinter import messagebox as msg
 
+
+def aboutmenu():
+    """ about menu function """
+    msg.showinfo("About", "Disaster Or Not \nVersion 1.0")
+
 class DisasterOrNot():
     def __init__(self,master):
         self.master = master
@@ -48,7 +53,7 @@ class DisasterOrNot():
         self.menu.add_cascade(label = "Edit", menu=self.edit_menu)
         
         self.about_menu = Menu(self.menu,tearoff = 0)
-        self.about_menu.add_command(label = "About",accelerator= 'Ctrl+I',command=self.aboutmenu)
+        self.about_menu.add_command(label = "About",accelerator= 'Ctrl+I',command= aboutmenu)
         self.menu.add_cascade(label="About",menu=self.about_menu)
         
         self.help_menu = Menu(self.menu,tearoff = 0)
@@ -58,7 +63,7 @@ class DisasterOrNot():
         self.master.config(menu=self.menu)
         self.master.bind('<Alt-F4>',lambda event: self.exitmenu())
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
-        self.master.bind('<Control-i>',lambda event: self.aboutmenu())
+        self.master.bind('<Control-i>',lambda event: aboutmenu())
 
     def exitmenu(self):
         if msg.askokcancel("Quit?", "Really quit?"):
@@ -84,9 +89,6 @@ class DisasterOrNot():
 
 
     def helpmenu(self):
-        pass
-    
-    def aboutmenu(self):
         pass
 
     def clear(self):
