@@ -43,7 +43,7 @@ class DisasterOrNot():
         self.menu.add_cascade(label = "File",menu=self.file_menu)
 
         self.edit_menu = Menu(self.menu, tearoff= 0)
-        self.edit_menu.add_command(label="Clear")
+        self.edit_menu.add_command(label="Clear", command=self.clear)
         self.menu.add_cascade(label = "Edit", menu=self.edit_menu)
         
         self.about_menu = Menu(self.menu,tearoff = 0)
@@ -79,6 +79,9 @@ class DisasterOrNot():
         pass
     
     def aboutmenu(self):
+        pass
+
+    def clear(self):
         pass
 
         
