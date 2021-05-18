@@ -70,7 +70,10 @@ class DisasterOrNot():
             self.master.destroy()
     
     def insertcsv(self):
-        pass
+        if self.filename == "":
+            msg.showerror("ERROR", "FILE IS ALREADY OPEN")
+        else:
+            pass
 
     def closefile(self):
         if self.filename == "":
