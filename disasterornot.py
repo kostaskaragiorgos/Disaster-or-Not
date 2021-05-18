@@ -1,5 +1,6 @@
-from tkinter import Tk, Menu, Label, Text, Button, END
+from tkinter import Tk, Menu, Label, Text, Button, END, filedialog
 from tkinter import messagebox as msg
+import pandas as pd
 
 
 def aboutmenu():
@@ -70,10 +71,24 @@ class DisasterOrNot():
             self.master.destroy()
     
     def insertcsv(self):
-        if self.filename == "":
+        if self.filename != "":
             msg.showerror("ERROR", "FILE IS ALREADY OPEN")
         else:
-            pass
+            self.filename = filedialog.askopenfilename(initialdir="/", title="Select csv file",
+                                                       filetypes=(("csv files", "*.csv"),
+                                                                  ("all files", "*.*")))
+            if ".csv" in self.filename:
+                self.df = pd.read_csv(self.filename)
+                if all([item in self.df.columns for item in ['keyword', 'location', 'text']]):
+                    msg.showinfo("SUCCESS", "CSV FILE ADDED SUCCESSFULLY")
+                    self.importeddf = pd.read_csv(self.filename)
+                else:
+                    self.filename = ""
+                    msg.showerror("ERROR", "NO PROPER CSV ")
+  
+            else:
+                self.filename = ""
+                msg.showerror("ERROR", "NO CSV IMPORTED")
 
     def closefile(self):
         if self.filename == "":
