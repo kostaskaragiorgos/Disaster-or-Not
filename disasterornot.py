@@ -52,6 +52,10 @@ class DisasterOrNot():
         self.edit_menu = Menu(self.menu, tearoff= 0)
         self.edit_menu.add_command(label="Clear", command=self.clearfunction)
         self.menu.add_cascade(label = "Edit", menu=self.edit_menu)
+
+        self.show_menu = Menu(self.menu, tearoff=0)
+        self.show_menu.add_command(label="Predictions")
+        self.menu.add_cascade(label="Show", menu=self.show_menu)
         
         self.about_menu = Menu(self.menu,tearoff = 0)
         self.about_menu.add_command(label = "About",accelerator= 'Ctrl+I',command= aboutmenu)
