@@ -109,8 +109,6 @@ class DisasterOrNot():
     def helpmenu(self):
         pass
 
-    def clear(self):
-        pass
 
         
 
