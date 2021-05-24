@@ -80,10 +80,13 @@ class DisasterOrNot():
             msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
         else:
             pass
-        
+
 
     def savetoexisted(self):
-        pass
+        if self.savepredictions == "":
+            msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
+        else:
+            pass
 
     def exitmenu(self):
         if msg.askokcancel("Quit?", "Really quit?"):
