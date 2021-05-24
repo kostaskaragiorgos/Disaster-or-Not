@@ -14,6 +14,7 @@ class DisasterOrNot():
         self.master.geometry("300x300")
         self.master.resizable(False,False)
         self.filename = ""
+        self.predictions = ""
 
         self.keywordleb = Label(self.master, text="Enter the keyword")
         self.keywordleb.pack()
@@ -68,13 +69,18 @@ class DisasterOrNot():
         self.menu.add_cascade(label="Help",menu=self.help_menu)
         
         self.master.config(menu=self.menu)
+        self.master.bind('<Control-o>', lambda event: self.insertcsv())
         self.master.bind('<Alt-F4>',lambda event: self.exitmenu())
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
         self.master.bind('<Control-i>',lambda event: aboutmenu())
     
 
     def savepredictions(self):
-        pass
+        if self.savepredictions == "":
+            msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
+        else:
+            pass
+        
 
     def savetoexisted(self):
         pass
