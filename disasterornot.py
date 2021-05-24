@@ -70,20 +70,22 @@ class DisasterOrNot():
         
         self.master.config(menu=self.menu)
         self.master.bind('<Control-o>', lambda event: self.insertcsv())
+        self.master.bind('<Control-F4>', lambda event:self.closefile())
+        
         self.master.bind('<Alt-F4>',lambda event: self.exitmenu())
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
         self.master.bind('<Control-i>',lambda event: aboutmenu())
     
 
     def savepredictions(self):
-        if self.savepredictions == "":
+        if self.predictions == "":
             msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
         else:
             pass
 
 
     def savetoexisted(self):
-        if self.savepredictions == "":
+        if self.predictions == "":
             msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
         else:
             pass
