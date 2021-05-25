@@ -1,12 +1,34 @@
 from tkinter import Tk, Menu, Label, Text, Button, END, filedialog
 from tkinter import messagebox as msg
+from nltk import corpus
 import pandas as pd
 import numpy as np
-
+import pickle
+import re
+import nltk
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+from sklearn.feature_extraction.text import CountVectorizer
 
 def aboutmenu():
     """ about menu function """
     msg.showinfo("About", "Disaster Or Not \nVersion 1.0")
+
+def corpusf(dataframe):
+    corpus = []
+    for i in range(0,len(dataframe)):
+        text = re.sub(r'^https?:\/\/.*[\r\n]*', '', dataframe['text'][i], flags=re.MULTILINE)
+        text = re.sub('[^a-zA-Z]', ' ', dataframe['text'][i])
+        text = text.lower()
+        text = text.split()
+        ps = PorterStemmer()
+        all_stopwords = stopwords.words('english')
+        all_stopwords.remove('not')
+        text = [word for word in text if not word in set(all_stopwords)]
+        text = ' '.join(text)
+        corpus.append(text)
+    return corpus
 
 class DisasterOrNot():
     def __init__(self,master):
@@ -16,6 +38,7 @@ class DisasterOrNot():
         self.master.resizable(False,False)
         self.filename = ""
         self.predictions = ""
+        self.model = 'models/GaussianNB_model.sav'
 
         self.keywordleb = Label(self.master, text="Enter the keyword")
         self.keywordleb.pack()
@@ -130,6 +153,12 @@ class DisasterOrNot():
                 if all([item in self.df.columns for item in ['keyword', 'location', 'text']]):
                     msg.showinfo("SUCCESS", "CSV FILE ADDED SUCCESSFULLY")
                     self.importeddf = pd.read_csv(self.filename)
+                    corpus = corpusf(self.importeddf)
+                    cv = CountVectorizer(max_features=2000)
+                    X = cv.fit_transform(corpus).toarray()
+                    loadedmodel = pickle.load(open(self.model, 'rb'))
+                    self.predictions = loadedmodel.predict(X)
+                    print(self.predictions)
                 else:
                     self.filename = ""
                     msg.showerror("ERROR", "NO PROPER CSV ")
