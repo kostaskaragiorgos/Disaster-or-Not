@@ -77,7 +77,7 @@ class DisasterOrNot():
         self.master.bind('<Control-s>', lambda event:self.savepredictions())
         self.master.bind('<Alt-s>', lambda event:self.savetoexisted())
         self.master.bind('<Alt-F4>',lambda event: self.exitmenu())
-        self.master.bind('<Control-z>', lambda event:self.clearfunction("NONE"))
+        self.master.bind('<Control-z>', lambda event:self.clearfunction(None))
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
         self.master.bind('<Control-i>',lambda event: aboutmenu())
     
@@ -137,7 +137,7 @@ class DisasterOrNot():
         elif field == "text":
             self.texttext.delete(1.0, END)
         else:
-            self.locationtext.delete(1.0, END)
+            self.keywordtext.delete(1.0, END)
             self.locationtext.delete(1.0, END)
             self.texttext.delete(1.0, END)
 
