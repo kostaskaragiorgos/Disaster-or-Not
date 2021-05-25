@@ -1,6 +1,7 @@
 from tkinter import Tk, Menu, Label, Text, Button, END, filedialog
 from tkinter import messagebox as msg
 import pandas as pd
+import numpy as np
 
 
 def aboutmenu():
@@ -92,7 +93,14 @@ class DisasterOrNot():
             filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file",
                                                     filetypes=(("csv files", "*.csv"),
                                                                 ("all files", "*.*")))
+            self.checktosave(filenamesave)
 
+    def checktosave(self, filename):
+        if filename is None or filename == "":
+            msg.showerror("ERROR", "NO FILE SAVED")
+        else:
+            np.savetxt(str(filename)+".csv", self.predictions)
+            msg.showinfo("SUCCESS", "CSV FILE SAVED SUCCESSFULLY")
 
     def savetoexisted(self):
         if self.predictions == "":
