@@ -89,7 +89,9 @@ class DisasterOrNot():
         if self.predictions == "":
             msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
         else:
-            pass
+            filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file",
+                                                    filetypes=(("csv files", "*.csv"),
+                                                                ("all files", "*.*")))
 
 
     def savetoexisted(self):
