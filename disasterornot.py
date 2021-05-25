@@ -84,7 +84,7 @@ class DisasterOrNot():
         self.menu.add_cascade(label = "Edit", menu=self.edit_menu)
 
         self.show_menu = Menu(self.menu, tearoff=0)
-        self.show_menu.add_command(label="Predictions", command=self.showpredictions)
+        self.show_menu.add_command(label="Predictions", accelerator='Ctrl+F5' ,command=self.showpredictions)
         self.menu.add_cascade(label="Show", menu=self.show_menu)
         
         self.about_menu = Menu(self.menu,tearoff = 0)
@@ -101,6 +101,7 @@ class DisasterOrNot():
         self.master.bind('<Control-s>', lambda event:self.savepredictions())
         self.master.bind('<Alt-s>', lambda event:self.savetoexisted())
         self.master.bind('<Alt-F4>',lambda event: self.exitmenu())
+        self.master.bind('<Control-F5>', lambda event: self.showpredictions())
         self.master.bind('<Control-z>', lambda event:self.clearfunction(None))
         self.master.bind('<Alt-z>', lambda event:self.clearfunction('keyword'))
         self.master.bind('<Alt-x>', lambda event:self.clearfunction('location'))
