@@ -38,7 +38,7 @@ class DisasterOrNot():
         self.predictbutton =  Button(self.master, text="Predict")
         self.predictbutton.pack()
 
-        self.clearbutton = Button(self.master, text="Clear", command=self.clearfunction)
+        self.clearbutton = Button(self.master, text="Clear", command= lambda: self.clearfunction(None))
         self.clearbutton.pack()
         
 
@@ -54,7 +54,7 @@ class DisasterOrNot():
 
         self.edit_menu = Menu(self.menu, tearoff= 0)
         self.edit_menu.add_command(label="Clear All", command= lambda: self.clearfunction(None))
-        self.edit_menu.add_command(label="Clear Keyword")
+        self.edit_menu.add_command(label="Clear Keyword", command= lambda: self.clearfunction('keyword'))
         self.edit_menu.add_command(label="Clear Location")
         self.edit_menu.add_command(label="Clear Text")
         self.menu.add_cascade(label = "Edit", menu=self.edit_menu)
