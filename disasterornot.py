@@ -96,8 +96,14 @@ class DisasterOrNot():
         if self.predictions == "":
             msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
         else:
-            pass
-
+            existedfile = filedialog.askopenfilename(initialdir="/", title="Select csv file",
+                                                       filetypes=(("csv files", "*.csv"),
+                                                                  ("all files", "*.*")))
+            if ".csv" in existedfile:
+                pass
+            else:
+                msg.showerror("ERROR", "NO CSV IMPORTED")
+                
     def exitmenu(self):
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
