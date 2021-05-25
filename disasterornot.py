@@ -84,7 +84,7 @@ class DisasterOrNot():
         self.menu.add_cascade(label = "Edit", menu=self.edit_menu)
 
         self.show_menu = Menu(self.menu, tearoff=0)
-        self.show_menu.add_command(label="Predictions")
+        self.show_menu.add_command(label="Predictions", command=self.showpredictions)
         self.menu.add_cascade(label="Show", menu=self.show_menu)
         
         self.about_menu = Menu(self.menu,tearoff = 0)
@@ -108,6 +108,13 @@ class DisasterOrNot():
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
         self.master.bind('<Control-i>',lambda event: aboutmenu())
     
+
+    def showpredictions(self):
+        if self.predictions == "":
+            msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
+        else:
+            msg.showinfo("PREDICTIONS", str(self.predictions))
+
 
     def savepredictions(self):
         if self.predictions == "":
@@ -158,7 +165,6 @@ class DisasterOrNot():
                     X = cv.fit_transform(corpus).toarray()
                     loadedmodel = pickle.load(open(self.model, 'rb'))
                     self.predictions = loadedmodel.predict(X)
-                    print(self.predictions)
                 else:
                     self.filename = ""
                     msg.showerror("ERROR", "NO PROPER CSV ")
