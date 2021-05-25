@@ -1,3 +1,4 @@
+from operator import index
 from tkinter import Tk, Menu, Label, Text, Button, END, filedialog
 from tkinter import messagebox as msg
 from nltk import corpus
@@ -141,7 +142,11 @@ class DisasterOrNot():
                                                        filetypes=(("csv files", "*.csv"),
                                                                   ("all files", "*.*")))
             if ".csv" in existedfile:
-                pass
+                if self.predictions != "":
+                    df = pd.read_csv(existedfile)
+                    df['Predictions'] = self.predictions
+                    df.to_csv(existedfile+".csv")
+
             else:
                 msg.showerror("ERROR", "NO CSV IMPORTED")
                 
@@ -179,6 +184,7 @@ class DisasterOrNot():
             msg.showerror("ERROR", "NO FILE TO CLOSE")
         else:
             self.filename = ""
+            self.predictions = ""
             msg.showinfo("SUSSESS", "YOUR CSV FILE HAS SUCCESFULLY CLOSED")
 
     def predict(self):
