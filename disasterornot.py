@@ -55,8 +55,8 @@ class DisasterOrNot():
         self.edit_menu = Menu(self.menu, tearoff= 0)
         self.edit_menu.add_command(label="Clear All", accelerator='Ctrl+Z', command= lambda: self.clearfunction(None))
         self.edit_menu.add_command(label="Clear Keyword", accelerator='Alt+Z', command= lambda: self.clearfunction('keyword'))
-        self.edit_menu.add_command(label="Clear Location", accelerator='Alt+x', command= lambda: self.clearfunction('location'))
-        self.edit_menu.add_command(label="Clear Text", accelerator='Alt+c', command= lambda: self.clearfunction('text'))
+        self.edit_menu.add_command(label="Clear Location", accelerator='Alt+X', command= lambda: self.clearfunction('location'))
+        self.edit_menu.add_command(label="Clear Text", accelerator='Alt+C', command= lambda: self.clearfunction('text'))
         self.menu.add_cascade(label = "Edit", menu=self.edit_menu)
 
         self.show_menu = Menu(self.menu, tearoff=0)
