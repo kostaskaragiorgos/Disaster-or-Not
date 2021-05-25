@@ -53,7 +53,7 @@ class DisasterOrNot():
         self.menu.add_cascade(label = "File",menu=self.file_menu)
 
         self.edit_menu = Menu(self.menu, tearoff= 0)
-        self.edit_menu.add_command(label="Clear All", command=self.clearfunction)
+        self.edit_menu.add_command(label="Clear All", command= lambda: self.clearfunction(None))
         self.edit_menu.add_command(label="Clear Keyword")
         self.edit_menu.add_command(label="Clear Location")
         self.edit_menu.add_command(label="Clear Text")
@@ -77,7 +77,7 @@ class DisasterOrNot():
         self.master.bind('<Control-s>', lambda event:self.savepredictions())
         self.master.bind('<Alt-s>', lambda event:self.savetoexisted())
         self.master.bind('<Alt-F4>',lambda event: self.exitmenu())
-        self.master.bind('<Control-z>', lambda event:self.clearfunction())
+        self.master.bind('<Control-z>', lambda event:self.clearfunction("NONE"))
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
         self.master.bind('<Control-i>',lambda event: aboutmenu())
     
@@ -129,10 +129,17 @@ class DisasterOrNot():
     def predict(self):
         pass
 
-    def clearfunction(self):
-        self.locationtext.delete(1.0, END)
-        self.keywordtext.delete(1.0, END)
-        self.texttext.delete(1.0, END)
+    def clearfunction(self, field):
+        if field == "location":
+            self.locationtext.delete(1.0, END)
+        elif field == "keyword":
+            self.keywordtext.delete(1.0, END)
+        elif field == "text":
+            self.texttext.delete(1.0, END)
+        else:
+            self.locationtext.delete(1.0, END)
+            self.locationtext.delete(1.0, END)
+            self.texttext.delete(1.0, END)
 
 
     def helpmenu(self):
