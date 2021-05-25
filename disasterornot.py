@@ -55,6 +55,8 @@ class DisasterOrNot():
         self.edit_menu = Menu(self.menu, tearoff= 0)
         self.edit_menu.add_command(label="Clear All", command=self.clearfunction)
         self.edit_menu.add_command(label="Clear Keyword")
+        self.edit_menu.add_command(label="Clear Location")
+        
         self.menu.add_cascade(label = "Edit", menu=self.edit_menu)
 
         self.show_menu = Menu(self.menu, tearoff=0)
