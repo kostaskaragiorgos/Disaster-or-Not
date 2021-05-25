@@ -80,7 +80,7 @@ class DisasterOrNot():
         self.master.bind('<Control-z>', lambda event:self.clearfunction(None))
         self.master.bind('<Alt-z>', lambda event:self.clearfunction('keyword'))
         self.master.bind('<Alt-x>', lambda event:self.clearfunction('location'))
-        self.master.bind('<Alt-c>', lambda event:self.clearbutton('text'))
+        self.master.bind('<Alt-c>', lambda event:self.clearfunction('text'))
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
         self.master.bind('<Control-i>',lambda event: aboutmenu())
     
