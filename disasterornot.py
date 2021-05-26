@@ -96,7 +96,7 @@ class DisasterOrNot():
         self.menu.add_cascade(label="About",menu=self.about_menu)
         
         self.help_menu = Menu(self.menu,tearoff = 0)
-        self.help_menu.add_command(label = "Help",accelerator = 'Ctrl+F1',command=self.helpmenu)
+        self.help_menu.add_command(label = "Help",accelerator = 'Ctrl+F1',command= helpmenu)
         self.menu.add_cascade(label="Help",menu=self.help_menu)
         
         self.master.config(menu=self.menu)
