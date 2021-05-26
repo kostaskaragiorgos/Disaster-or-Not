@@ -166,11 +166,6 @@ class DisasterOrNot():
                 if all([item in self.df.columns for item in ['keyword', 'location', 'text']]):
                     msg.showinfo("SUCCESS", "CSV FILE ADDED SUCCESSFULLY")
                     self.importeddf = pd.read_csv(self.filename)
-                    corpus = corpusf(self.importeddf)
-                    cv = CountVectorizer(max_features=2000)
-                    X = cv.fit_transform(corpus).toarray()
-                    loadedmodel = pickle.load(open(self.model, 'rb'))
-                    self.predictions = loadedmodel.predict(X)
                 else:
                     self.filename = ""
                     msg.showerror("ERROR", "NO PROPER CSV ")
@@ -188,7 +183,13 @@ class DisasterOrNot():
             msg.showinfo("SUSSESS", "YOUR CSV FILE HAS SUCCESFULLY CLOSED")
 
     def predict(self):
-        pass
+        if self.filename != "" and self.predictions == "":
+            corpus = corpusf(self.importeddf)
+            cv = CountVectorizer(max_features=2000)
+            X = cv.fit_transform(corpus).toarray()
+            loadedmodel = pickle.load(open(self.model, 'rb'))
+            self.predictions = loadedmodel.predict(X)
+
 
     def clearfunction(self, field):
         if field == "location":
