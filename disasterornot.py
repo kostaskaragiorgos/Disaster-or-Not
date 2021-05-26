@@ -122,6 +122,7 @@ class DisasterOrNot():
     
 
     def showpredictions(self):
+        """ shows the predictions to the user"""
         if self.predictions == "":
             msg.showerror("ERROR", "NO PREDICTIONS TO SHOW")
         else:
@@ -129,6 +130,7 @@ class DisasterOrNot():
 
 
     def savepredictions(self):
+        """ saves the predictions to a new .csv file """
         if self.predictions == "":
             msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
         else:
