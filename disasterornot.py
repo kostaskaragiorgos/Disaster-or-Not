@@ -198,6 +198,8 @@ class DisasterOrNot():
             X = cv.fit_transform(corpus).toarray()
             loadedmodel = pickle.load(open(self.model, 'rb'))
             self.predictions = loadedmodel.predict(X)
+        elif self.predictions != "":
+            msg.showinfo("PREDICTIONS", str(self.predictions))
 
 
     def clearfunction(self, field):
