@@ -16,6 +16,9 @@ def aboutmenu():
     """ about menu function """
     msg.showinfo("About", "Disaster Or Not \nVersion 1.0")
 
+def helpmenu():
+    msg.showinfo("Help", "INSERT A .CSV FILE OR FILL THE TEXT BOXES TO PREDICT IF THE TEXT REFERS TO A DISASTER OR NOT")
+
 def corpusf(dataframe):
     corpus = []
     for i in range(0,len(dataframe)):
@@ -212,11 +215,6 @@ class DisasterOrNot():
             self.texttext.delete(1.0, END)
 
 
-    def helpmenu(self):
-        pass
-
-
-        
 
 def main():
     root=Tk()
