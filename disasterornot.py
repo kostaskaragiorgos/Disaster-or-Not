@@ -60,7 +60,7 @@ class DisasterOrNot():
         self.texttext = Text(self.master, height=5, width=25)
         self.texttext.pack()
 
-        self.predictbutton =  Button(self.master, text="Predict")
+        self.predictbutton =  Button(self.master, text="Predict", command=self.predict)
         self.predictbutton.pack()
 
         self.clearbutton = Button(self.master, text="Clear", command= lambda: self.clearfunction(None))
@@ -113,7 +113,7 @@ class DisasterOrNot():
 
     def showpredictions(self):
         if self.predictions == "":
-            msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
+            msg.showerror("ERROR", "NO PREDICTIONS TO SHOW")
         else:
             msg.showinfo("PREDICTIONS", str(self.predictions))
 
