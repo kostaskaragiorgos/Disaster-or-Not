@@ -17,9 +17,16 @@ def aboutmenu():
     msg.showinfo("About", "Disaster Or Not \nVersion 1.0")
 
 def helpmenu():
+    """ help menu function """
     msg.showinfo("Help", "INSERT A .CSV FILE OR FILL THE TEXT BOXES TO PREDICT IF THE TEXT REFERS TO A DISASTER OR NOT")
 
 def corpusf(dataframe):
+    """ function to create the corpus list.
+    Args:
+        dataframe: the dataframe
+    Returns:
+        corpus: a list
+    """
     corpus = []
     for i in range(0,len(dataframe)):
         text = re.sub(r'^https?:\/\/.*[\r\n]*', '', dataframe['text'][i], flags=re.MULTILINE)
