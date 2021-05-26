@@ -7,10 +7,11 @@ import numpy as np
 import pickle
 import re
 import nltk
-nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer
+nltk.download('stopwords')
+
 
 def aboutmenu():
     """ about menu function """
@@ -28,7 +29,7 @@ def corpusf(dataframe):
         corpus: a list
     """
     corpus = []
-    for i in range(0,len(dataframe)):
+    for i in range(0, len(dataframe)):
         text = re.sub(r'^https?:\/\/.*[\r\n]*', '', dataframe['text'][i], flags=re.MULTILINE)
         text = re.sub('[^a-zA-Z]', ' ', dataframe['text'][i])
         text = text.lower()
@@ -42,11 +43,11 @@ def corpusf(dataframe):
     return corpus
 
 class DisasterOrNot():
-    def __init__(self,master):
+    def __init__(self, master):
         self.master = master
         self.master.title("Disaster Or Not")
         self.master.geometry("300x300")
-        self.master.resizable(False,False)
+        self.master.resizable(False, False)
         self.filename = ""
         self.predictions = ""
         self.model = 'models/GaussianNB_model.sav'
@@ -70,55 +71,55 @@ class DisasterOrNot():
         self.texttext = Text(self.master, height=5, width=25)
         self.texttext.pack()
 
-        self.predictbutton =  Button(self.master, text="Predict", command=self.predict)
+        self.predictbutton = Button(self.master, text="Predict", command=self.predict)
         self.predictbutton.pack()
 
-        self.clearbutton = Button(self.master, text="Clear", command= lambda: self.clearfunction(None))
+        self.clearbutton = Button(self.master, text="Clear", command=lambda: self.clearfunction(None))
         self.clearbutton.pack()
         
 
         self.menu = Menu(self.master)
         
-        self.file_menu = Menu(self.menu,tearoff = 0)
+        self.file_menu = Menu(self.menu, tearoff=0)
         self.file_menu.add_command(label="Insert a csv file", accelerator='Ctrl+O', command=self.insertcsv)
         self.file_menu.add_command(label="Close file", accelerator="Ctrl+F4", command=self.closefile)
         self.file_menu.add_command(label="Save file", accelerator='Ctrl+S', command=self.savepredictions)
         self.file_menu.add_command(label="Save to existed file", accelerator='Alt+S', command=self.savetoexisted)
-        self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
-        self.menu.add_cascade(label = "File",menu=self.file_menu)
+        self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
+        self.menu.add_cascade(label="File", menu=self.file_menu)
 
-        self.edit_menu = Menu(self.menu, tearoff= 0)
-        self.edit_menu.add_command(label="Clear All", accelerator='Ctrl+Z', command= lambda: self.clearfunction(None))
-        self.edit_menu.add_command(label="Clear Keyword", accelerator='Alt+Z', command= lambda: self.clearfunction('keyword'))
-        self.edit_menu.add_command(label="Clear Location", accelerator='Alt+X', command= lambda: self.clearfunction('location'))
-        self.edit_menu.add_command(label="Clear Text", accelerator='Alt+C', command= lambda: self.clearfunction('text'))
-        self.menu.add_cascade(label = "Edit", menu=self.edit_menu)
+        self.edit_menu = Menu(self.menu, tearoff=0)
+        self.edit_menu.add_command(label="Clear All", accelerator='Ctrl+Z', command=lambda: self.clearfunction(None))
+        self.edit_menu.add_command(label="Clear Keyword", accelerator='Alt+Z', command=lambda: self.clearfunction('keyword'))
+        self.edit_menu.add_command(label="Clear Location", accelerator='Alt+X', command=lambda: self.clearfunction('location'))
+        self.edit_menu.add_command(label="Clear Text", accelerator='Alt+C', command=lambda: self.clearfunction('text'))
+        self.menu.add_cascade(label="Edit", menu=self.edit_menu)
 
         self.show_menu = Menu(self.menu, tearoff=0)
-        self.show_menu.add_command(label="Predictions", accelerator='Ctrl+F5' ,command=self.showpredictions)
+        self.show_menu.add_command(label="Predictions", accelerator='Ctrl+F5', command=self.showpredictions)
         self.menu.add_cascade(label="Show", menu=self.show_menu)
         
-        self.about_menu = Menu(self.menu,tearoff = 0)
-        self.about_menu.add_command(label = "About",accelerator= 'Ctrl+I',command= aboutmenu)
-        self.menu.add_cascade(label="About",menu=self.about_menu)
+        self.about_menu = Menu(self.menu, tearoff=0)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
+        self.menu.add_cascade(label="About", menu=self.about_menu)
         
-        self.help_menu = Menu(self.menu,tearoff = 0)
-        self.help_menu.add_command(label = "Help",accelerator = 'Ctrl+F1',command= helpmenu)
-        self.menu.add_cascade(label="Help",menu=self.help_menu)
+        self.help_menu = Menu(self.menu, tearoff=0)
+        self.help_menu.add_command(label="Help", accelerator='Ctrl+F1', command=helpmenu)
+        self.menu.add_cascade(label="Help", menu=self.help_menu)
         
         self.master.config(menu=self.menu)
         self.master.bind('<Control-o>', lambda event: self.insertcsv())
-        self.master.bind('<Control-F4>', lambda event:self.closefile())
-        self.master.bind('<Control-s>', lambda event:self.savepredictions())
-        self.master.bind('<Alt-s>', lambda event:self.savetoexisted())
-        self.master.bind('<Alt-F4>',lambda event: self.exitmenu())
+        self.master.bind('<Control-F4>', lambda event: self.closefile())
+        self.master.bind('<Control-s>', lambda event: self.savepredictions())
+        self.master.bind('<Alt-s>', lambda event: self.savetoexisted())
+        self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F5>', lambda event: self.showpredictions())
-        self.master.bind('<Control-z>', lambda event:self.clearfunction(None))
-        self.master.bind('<Alt-z>', lambda event:self.clearfunction('keyword'))
-        self.master.bind('<Alt-x>', lambda event:self.clearfunction('location'))
-        self.master.bind('<Alt-c>', lambda event:self.clearfunction('text'))
-        self.master.bind('<Control-F1>',lambda event: helpmenu())
-        self.master.bind('<Control-i>',lambda event: aboutmenu())
+        self.master.bind('<Control-z>', lambda event: self.clearfunction(None))
+        self.master.bind('<Alt-z>', lambda event: self.clearfunction('keyword'))
+        self.master.bind('<Alt-x>', lambda event: self.clearfunction('location'))
+        self.master.bind('<Alt-c>', lambda event: self.clearfunction('text'))
+        self.master.bind('<Control-F1>', lambda event: helpmenu())
+        self.master.bind('<Control-i>', lambda event: aboutmenu())
     
 
     def showpredictions(self):
@@ -135,8 +136,8 @@ class DisasterOrNot():
             msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
         else:
             filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file",
-                                                    filetypes=(("csv files", "*.csv"),
-                                                                ("all files", "*.*")))
+                                                        filetypes=(("csv files", "*.csv"),
+                                                                   ("all files", "*.*")))
             self.checktosave(filenamesave)
 
     def checktosave(self, filename):
@@ -152,8 +153,8 @@ class DisasterOrNot():
             msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
         else:
             existedfile = filedialog.askopenfilename(initialdir="/", title="Select csv file",
-                                                       filetypes=(("csv files", "*.csv"),
-                                                                  ("all files", "*.*")))
+                                                     filetypes=(("csv files", "*.csv"),
+                                                                ("all files", "*.*")))
             if ".csv" in existedfile and self.predictions != "":
                 df = pd.read_csv(existedfile)
                 df['Predictions'] = self.predictions
@@ -229,9 +230,9 @@ class DisasterOrNot():
 
 
 def main():
-    root=Tk()
+    root = Tk()
     DisasterOrNot(root)
     root.mainloop()
     
-if __name__=='__main__':
+if __name__ == '__main__':
     main()
