@@ -147,6 +147,7 @@ class DisasterOrNot():
             msg.showinfo("SUCCESS", "CSV FILE SAVED SUCCESSFULLY")
 
     def savetoexisted(self):
+        """ saves the predictions to an existed file"""
         if self.predictions == "":
             msg.showerror("ERROR", "NO PREDICTIONS TO SAVE")
         else:
