@@ -144,14 +144,12 @@ class DisasterOrNot():
             existedfile = filedialog.askopenfilename(initialdir="/", title="Select csv file",
                                                        filetypes=(("csv files", "*.csv"),
                                                                   ("all files", "*.*")))
-            if ".csv" in existedfile:
-                if self.predictions != "":
-                    df = pd.read_csv(existedfile)
-                    df['Predictions'] = self.predictions
-                    df.to_csv(existedfile+".csv")
-
+            if ".csv" in existedfile and self.predictions != "":
+                df = pd.read_csv(existedfile)
+                df['Predictions'] = self.predictions
+                df.to_csv(existedfile+".csv")
             else:
-                msg.showerror("ERROR", "NO CSV IMPORTED")
+                msg.showerror("ERROR", "NO CSV IMPORTED OR NO PREDICTIONS TO SAVE")
                 
     def exitmenu(self):
         if msg.askokcancel("Quit?", "Really quit?"):
