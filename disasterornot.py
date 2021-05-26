@@ -166,6 +166,7 @@ class DisasterOrNot():
                 if all([item in self.df.columns for item in ['keyword', 'location', 'text']]):
                     msg.showinfo("SUCCESS", "CSV FILE ADDED SUCCESSFULLY")
                     self.importeddf = pd.read_csv(self.filename)
+                    self.statechange("disable")
                 else:
                     self.filename = ""
                     msg.showerror("ERROR", "NO PROPER CSV ")
@@ -181,6 +182,12 @@ class DisasterOrNot():
             self.filename = ""
             self.predictions = ""
             msg.showinfo("SUSSESS", "YOUR CSV FILE HAS SUCCESFULLY CLOSED")
+
+    def statechange(self, state):
+        """ changes the state of buttons, texts etc.. """
+        self.keywordtext.config(state=state)
+        self.texttext.config(state=state)
+        self.locationtext.config(state=state)
 
     def predict(self):
         if self.filename != "" and self.predictions == "":
