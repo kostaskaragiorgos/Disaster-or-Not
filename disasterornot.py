@@ -181,6 +181,7 @@ class DisasterOrNot():
         else:
             self.filename = ""
             self.predictions = ""
+            self.statechange("normal")
             msg.showinfo("SUSSESS", "YOUR CSV FILE HAS SUCCESFULLY CLOSED")
 
     def statechange(self, state):
