@@ -187,6 +187,7 @@ class DisasterOrNot():
                 msg.showerror("ERROR", "NO CSV IMPORTED")
 
     def closefile(self):
+        """ closes the inserted file """
         if self.filename == "":
             msg.showerror("ERROR", "NO FILE TO CLOSE")
         else:
@@ -202,6 +203,7 @@ class DisasterOrNot():
         self.locationtext.config(state=state)
 
     def predict(self):
+        """ predicts the outcome """ 
         if self.filename != "" and self.predictions == "":
             corpus = corpusf(self.importeddf)
             cv = CountVectorizer(max_features=2000)
