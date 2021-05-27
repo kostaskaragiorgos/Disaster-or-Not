@@ -163,10 +163,12 @@ class DisasterOrNot():
                 msg.showerror("ERROR", "NO CSV IMPORTED OR NO PREDICTIONS TO SAVE")
                 
     def exitmenu(self):
+        """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     
     def insertcsv(self):
+        """ insert file function """
         if self.filename != "":
             msg.showerror("ERROR", "FILE IS ALREADY OPEN")
         else:
@@ -216,6 +218,7 @@ class DisasterOrNot():
 
 
     def clearfunction(self, field):
+        """ clears the text fields  """
         if field == "location":
             self.locationtext.delete(1.0, END)
         elif field == "keyword":
