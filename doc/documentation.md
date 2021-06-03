@@ -53,6 +53,14 @@ You press ok to close the app or cancel if you don't want
 
 If there are no predictions an error message pops ups
 
+<p><img src ="doc images/Show menu/no predictions.png" title="no predictions error"/> </p>
+
+else
+
+an informative message pops up
+
+
+<p><img src ="doc images/Show menu/predictions.png" title="predictions"/> </p>
 
 
 # About menu
