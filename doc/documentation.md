@@ -37,7 +37,22 @@ An informative message pops up
 
 You press ok to close the app or cancel if you don't want
 
+# Edit menu
+
+## Clear all
+
+## Clear keyword
+
+## Clear location
+
+## Clear Text
+
 # Show menu
+
+## Predictions
+
+If there are no predictions an error message pops ups
+
 
 
 # About menu
