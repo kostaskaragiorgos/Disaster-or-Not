@@ -8,7 +8,6 @@
 ## Close file
 
 
-
 You can close a .csv file using menu File --> Close file or using Ctrl+F4 keybind
 
 
