@@ -184,7 +184,6 @@ class DisasterOrNot():
                 else:
                     self.filename = ""
                     msg.showerror("ERROR", "NO PROPER CSV ")
-  
             else:
                 self.filename = ""
                 msg.showerror("ERROR", "NO CSV IMPORTED")
@@ -218,7 +217,10 @@ class DisasterOrNot():
 
 
     def clearfunction(self, field):
-        """ clears the text fields  """
+        """ clears the text fields.
+        Args:
+            field = the text field to clear
+        """
         if field == "location":
             self.locationtext.delete(1.0, END)
         elif field == "keyword":
