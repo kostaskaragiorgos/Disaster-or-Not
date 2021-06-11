@@ -89,8 +89,14 @@ All project documentation is located in the `./doc`  folder.
 <ul>
   <li> Insert a csv Ctrl+O </li>
   <li> Close file Ctrl+F4 </li>
+  <li> Save file Ctrl+S </li>
+  <li> Save to existed file Alt+S </li>
   <li> Exit Alt+F4 </li>
-  <li> Clear Ctrl+Z </li>
+  <li> Clear All Ctrl+Z </li>
+  <li> Clear Keyword Alt+Z </li>
+  <li> Clear Location Alt+X </li>
+  <li> Clear Text Alt+C </li>
+  <li> Predictions Ctrl+F5 </li>
   <li> About Ctrl+I </li>
   <li> Help Ctrl+F1 </li>
 </ul>
