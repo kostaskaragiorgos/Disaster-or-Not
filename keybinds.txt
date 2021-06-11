@@ -1,0 +1,27 @@
+File menu
+===================
+Insert a csv Ctrl+O
+Close file Ctrl+F4
+Save file Ctrl+S
+Save to existed file Alt+S
+Exit Alt+F4
+============
+Clear menu
+============
+Clear All Ctrl+Z
+Clear Keyword Alt+Z 
+Clear Location Alt+X 
+Clear Text Alt+C
+============
+Show menu
+===================
+Predictions Ctrl+F5
+===================
+About menu
+==============
+About Ctrl + I
+==============
+Help menu
+==============
+Help Ctrl + F1
+==============
