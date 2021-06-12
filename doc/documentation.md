@@ -68,6 +68,10 @@ You can clear the text text field of the app by using menu Edit --> Clear Text o
 
 ## Predictions
 
+You can show the predictions by using menu Show --> Predictions  or using Control + F5 keybind
+
+<p><img src ="doc images/Show menu/predictions menu.png" title="predictions menu"/> </p>
+
 If there are no predictions an error message pops ups
 
 <p><img src ="doc images/Show menu/no predictions.png" title="no predictions error"/> </p>
