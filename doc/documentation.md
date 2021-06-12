@@ -43,17 +43,26 @@ You press ok to close the app or cancel if you don't want
 
 You can clear all the text field of the app by using menu Edit --> Clear All or using Ctrl+Z keybind
 
+<p><img src ="doc images/Edit menu/Clear all.png" title="Clear all"/> </p>
+
 ## Clear keyword
 
 You can clear the keyword text field of the app by using menu Edit --> Clear Keyword or using Alt+Z keybind
+
+<p><img src ="doc images/Edit menu/Clear Keyword.png" title="Clear Keyword"/> </p>
 
 ## Clear location
 
 You can clear the location text field of the app by using menu Edit --> Clear Location or using Alt+X keybind
 
+<p><img src ="doc images/Edit menu/Clear location.png" title="Clear Location"/> </p>
+
 ## Clear Text
 
 You can clear the text text field of the app by using menu Edit --> Clear Text or using Alt+C keybind
+
+<p><img src ="doc images/Edit menu/Clear Text.png" title="Clear Text"/> </p>
+
 
 # Show menu
 
