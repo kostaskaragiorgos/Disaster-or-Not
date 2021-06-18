@@ -30,9 +30,13 @@ an informative message pops up
 
 You can save the predictions to a .csv file using menu File --> Save file or using Ctrl+S keybind
 
+<p><img src = "doc images/File menu/save file.png" title="Save file"/> </p>
+
 ## Save to existed file
 
 You can save the predictions to an existed .csv file using menu File --> Save to existed file or using Alt+S keybind
+
+<p><img src = "doc images/File menu/save to existed file.png" title="Save to existed file"/> </p>
 
 ## Exit
 
