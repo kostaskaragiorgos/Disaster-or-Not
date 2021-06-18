@@ -26,6 +26,13 @@ an informative message pops up
 
 <p><img src ="doc images/File menu/successful file close.png" title="successful file close"/> </p>
 
+## Save file
+
+You can save the predictions to a .csv file using menu File --> Save file or using Ctrl+S keybind
+
+## Save to existed file
+
+You can save the predictions to an existed .csv file using menu File --> Save to existed file or using Alt+S keybind
 
 ## Exit
 
